@@ -61,8 +61,8 @@ const moreLinks = [
     url: "https://gatsbyjs.com/showcase/",
   },
   {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
+    text: "Three.js Scene",
+    url: "scene",
   },
   { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
 ]
