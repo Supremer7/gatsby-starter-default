@@ -5,6 +5,22 @@ import { Canvas } from '@react-three/fiber';
 import { Box, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+import { Plane, useTexture } from '@react-three/drei';
+import SUSImage from '../images/SUS.webp';
+
+
+const ImagePlane = ({ image }) => {
+    const texture = useTexture(image);
+    texture.minFilter = texture.magFilter = THREE.LinearFilter;
+    texture.generateMipmaps = false;
+
+    return (
+        <Plane args={[1, 1]} position={[0, 0, 0]}>
+            <meshBasicMaterial map={texture} transparent />
+        </Plane>
+    );
+};
+
 
 const FullScreenScene = ({ serverData }) => {
     const [dimensions, setDimensions] = useState({
@@ -39,9 +55,7 @@ const FullScreenScene = ({ serverData }) => {
                 <OrbitControls />
                 <ambientLight />
                 <pointLight position={[10, 10, 10]} />
-                <Box args={[1, 1, 1]} position={[0, 0, 0]}>
-                    <meshStandardMaterial color={'orange'} />
-                </Box>
+                <ImagePlane image={SUSImage} />
             </Canvas>
         </Layout>
     );
