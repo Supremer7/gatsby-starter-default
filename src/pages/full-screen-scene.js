@@ -10,7 +10,10 @@ import SUSImage from '../images/SUS.webp';
 
 
 const ImagePlane = ({ image }) => {
-    const texture = useTexture(image);
+    const texture = useTexture(image, null, (err) => {
+        console.error(err);
+    });
+    if (!texture) return null;
     texture.minFilter = texture.magFilter = THREE.LinearFilter;
     texture.generateMipmaps = false;
 

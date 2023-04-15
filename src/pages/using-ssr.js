@@ -42,10 +42,13 @@ export async function getServerData() {
     if (!res.ok) {
       throw new Error(`Response failed`)
     }
+    const data = await res.json();
+    console.log(data); // add this line
     return {
-      props: await res.json(),
+      props: data,
     }
   } catch (error) {
+    console.error(error); // add this line
     return {
       status: 500,
       headers: {},
